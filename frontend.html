@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Frontend</title>
+
+	 <!-- REACT LIBRARY -->
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <!-- REACT DOM LIBRARY -->
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <!-- BABEL LIBRARY -->
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <style type="text/css">
+    	#app{
+    		text-align:center;
+    	}
+    	#big{
+    		font-size: 32px;
+    	}
+
+    </style>
+</head>
+<body>
+	
+	<div id="app" style=""></div>
+
+	
+	<script type="text/babel">
+		function Counter() {
+			
+			const [count, countState] = React.useState(0);
+
+			function updateCount(){
+				countState(count + 1);
+			}
+			function clearCount(){
+				countState(0);
+			}
+			function decreaseCount(){
+				if(count <=0){
+					countState(0);
+				}
+				else{
+				countState(count - 1);
+			}
+			}
+			return(
+			<div>
+				<h1>Counter</h1>
+				<div id="big">{count}</div>
+				<button onClick={updateCount}>Increase</button>
+				<button onClick={clearCount}>Clear</button>
+				<button onClick={decreaseCount}>Decrease</button>
+			</div>);
+		}
+
+		ReactDOM.render(<Counter/>,document.querySelector("#app"));
+	</script>
+
+</body>
+</html>
